@@ -1,28 +1,24 @@
  #! /usr/bin/env python3
-     
-"""Non-comprehensive example of your code demonstrating some good
-Python coding practices.
-     
-See https://www.python.org/dev/peps/pep-0008/
-"""
-     
+      
 import requests
      
      
-__version__ = "0.1"
+__version__ = "0.2"
 __license__ = "MIT"
-__author__ = "Someone"
+__author__  = "pomf"
 __credits__ = "rebirth, pomf"
      
+
      
 def ctof(temp):
         """Convert temperature from Celsius to Fahrenheit."""
-        return temp * 9/5 + 32  # functions should be surrounded by 2 blank lines
-     
+        return temp * 9/5 + 32               # functions should be surrounded by 2 blank lines
+ 
+    
      
 def main():
-        api_key = "3b64cccda8b44210a213a00698a8028a"
-        city = input("City name:")  # inline comments minimum 2 spaces after statement
+        api_key = open('key.txt').read().strip()
+        city = input("City name:")
         uri = f"https://api.weatherbit.io/v2.0/current?city={city}&key={api_key}"
         weather_data = requests.get(uri).json()
         ccode = weather_data["data"][0]["country_code"]
